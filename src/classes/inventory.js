@@ -181,4 +181,8 @@ export class Inventory {
             ? inventory.weapons.map(i => new Weapon(i))
             : [];
     }
+
+    get attunedItems() {
+        return this.magicItems.map(i => (i.isAttuned ? 1 : 0)).reduce(R.add, 0);
+    }
 }
