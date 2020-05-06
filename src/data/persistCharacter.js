@@ -1,6 +1,7 @@
 import { remote } from "electron";
 import path from "path";
-import fs from "fs";
+// import fs from "fs";
+import { promises as fsPromises } from "fs";
 
 const userDataPath = path.join(remote.app.getPath("userData"), "characters");
 
@@ -16,7 +17,7 @@ const baseDir =
  */
 export const readCharacter = async characterFile => {
     const filePath = path.join(baseDir, characterFile);
-    const data = fs.readFileSync(filePath, "utf-8");
+    const data = await fsPromises.readFile(filePath, "utf-8");
     const character = JSON.parse(data);
     return character;
 };
@@ -28,7 +29,7 @@ export const readCharacter = async characterFile => {
 export const characterList = async () => {
     const charFile = path.join(baseDir, "characters.json");
     try {
-        const data = fs.readFileSync(charFile, "utf-8");
+        const data = await fsPromises.readFile(charFile, "utf-8");
         return JSON.parse(data);
     } catch (error) {
         return [];
@@ -48,5 +49,5 @@ export const saveCharacter = async (characterData, characterFile) => {
     }
     console.log("Writing data to file");
     console.log(data);
-    fs.writeFileSync(filePath, data);
+    fsPromises.writeFile(filePath, data);
 };
