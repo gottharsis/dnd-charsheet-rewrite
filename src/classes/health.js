@@ -21,7 +21,10 @@ export class Health {
     constructor(health) {
         Object.assign(
             this,
-            R.pick(["hp", "maxHp", "tempHp", "exhaustion", "deathSaves"])
+            R.pick(
+                ["hp", "maxHp", "tempHp", "exhaustion", "deathSaves"],
+                health
+            )
         );
         this.hitDice = R.pipe(
             R.propOr([], "hitDice"),
