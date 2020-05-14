@@ -1,62 +1,67 @@
 import R from "ramda";
+import { addIfAbsent } from "@/util/util";
 
 export class SpellSlot {
-    used = 0;
-    total = 0;
+  used = 0;
+  total = 0;
 }
 
-const addIfAbsent = R.uncurryN(2, el => R.unless(R.includes(el), R.append(el)));
+// const addIfAbsent = R.uncurryN(2, el => R.unless(R.includes(el), R.append(el)));
 
 export class CastingClass {
-    name = "";
-    castingClass = "";
-    dc = 0;
-    attackBonus = 0;
-    knownSpells = [];
-    preparedSpells = [];
-    alwaysPrepared = [];
-    numToPrepare = 0;
-    level = 0;
+  name = "";
+  ability = "";
+  dc = 0;
+  attackBonus = 0;
+  knownSpells = [];
+  preparedSpells = [];
+  alwaysPrepared = [];
+  numToPrepare = 0;
+  known = 0;
+  level = 0;
+  progression = 1;
 
-    learnSpell(spell) {
-        this.knownSpells = addIfAbsent(spell, this.knownSpells);
-    }
+  learnSpell(spell) {
+    this.knownSpells = addIfAbsent(spell, this.knownSpells);
+  }
 
-    prepareSpell(spell) {
-        if (
-            R.includes(spell, this.knownSpells) &&
-            this.preparedSpells.length < this.numToPrepare
-        ) {
-            this.preparedSpells = addIfAbsent(spell, this.preparedSpells);
-        }
+  prepareSpell(spell) {
+    if (
+      R.includes(spell, this.knownSpells) &&
+      this.preparedSpells.length < this.numToPrepare
+    ) {
+      this.preparedSpells = addIfAbsent(spell, this.preparedSpells);
     }
+  }
 
-    alwaysPrepare(spell) {
-        learnSpell(spell);
-        this.alwaysPrepared = addIfAbsent(spell, this.alwaysPrepared);
-    }
+  alwaysPrepare(spell) {
+    learnSpell(spell);
+    this.alwaysPrepared = addIfAbsent(spell, this.alwaysPrepared);
+  }
 
-    alwaysUnprepare(spell) {
-        this.alwaysPRepared = R.reject(R.eq(spell), this.alwaysPrepared);
-    }
-    forgetSpell(spell) {
-        this.knownSpells = R.reject(R.eq(spell), this.knownSpells);
-    }
+  alwaysUnprepare(spell) {
+    this.alwaysPRepared = R.reject(R.eq(spell), this.alwaysPrepared);
+  }
+  forgetSpell(spell) {
+    this.knownSpells = R.reject(R.eq(spell), this.knownSpells);
+  }
 
-    unprepareSpell(spell) {
-        this.preparedSpells = R.reject(R.eq(spell), this.preparedSpells);
-    }
+  unprepareSpell(spell) {
+    this.preparedSpells = R.reject(R.eq(spell), this.preparedSpells);
+  }
 }
 
 export class Magic {
-    constructor(magic = {}) {
-        this.castingClasses = magic.castingClasses
-            ? magic.castingClasses.map(i => new CastingClass(i))
-            : [];
+  constructor(magic = {}) {
+    this.castingClasses = magic.castingClasses
+      ? magic.castingClasses.map(i => new CastingClass(i))
+      : [];
 
-        this.spellSlots = R.pipe(
-            R.propOr(R.range(0, 10), "spellSlots"),
-            R.map(i => new SpellSlot(i))
-        )(magic);
-    }
+    this.spellSlots = R.pipe(
+      R.propOr(R.range(0, 10), "spellSlots"),
+      R.map(i => new SpellSlot(i))
+    )(magic);
+  }
+
+  resetSpellSlots() {}
 }

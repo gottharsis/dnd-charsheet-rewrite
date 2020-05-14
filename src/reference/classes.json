@@ -1,62 +1,247 @@
-{
-  "warlock": {
-    "id": "warlock",
-    "name": "Warlock",
-    "hitDice": "d8",
-    "savingThrows": ["WIS", "CHA"],
-    "skills": [
-      "Arcana",
-      "Deception",
-      "History",
-      "Intimidation",
-      "Investigation",
-      "Nature",
-      "Religion"
+[
+  {
+    "name": "Artificer",
+    "hitDice": 8,
+    "spellcasting": {
+      "ability": "INT",
+      "progression": 0.6667
+    },
+    "subclasses": ["Alchemist", "Armorer (UA)", "Artillerist", "Battle Smith"]
+  },
+  {
+    "name": "Barbarian",
+    "hitDice": 12,
+    "subclasses": [
+      "Ancestral Guardian",
+      "Battlerager",
+      "Beast (UA)",
+      "Berserker",
+      "Storm Herald",
+      "Totem Warrior",
+      "Wild Soul (UA)",
+      "Zealot"
+    ]
+  },
+  {
+    "name": "Bard",
+    "hitDice": 8,
+    "subclasses": [
+      "Creation (UA)",
+      "Eloquence (UA)",
+      "Glamour",
+      "Lore",
+      "Satire (UA)",
+      "Swords",
+      "Valor",
+      "Whispers"
     ],
-    "data": ":/class_data/warlock.html",
-    "subclasses": {
-      "fiend": {
-        "name": "Fiend"
-      },
-      "archfey": {
-        "name": "Archfey"
-      }
+    "spellcasting": {
+      "ability": "CHA",
+      "progression": 1
     }
   },
-
-  "wizard": {
-    "id": "wizard",
+  {
+    "name": "Cleric",
+    "hitDice": 8,
+    "spellcasting": {
+      "ability": "WIS",
+      "progression": 1
+    },
+    "subclasses": [
+      "Arcana",
+      "Death",
+      "Forge",
+      "Grave",
+      "Knowledge",
+      "Life",
+      "Light",
+      "Nature",
+      "Order",
+      "Protection (UA)",
+      "Tempest",
+      "Trickery",
+      "Twilight (UA)",
+      "Unity (UA)",
+      "War"
+    ]
+  },
+  {
+    "name": "Druid",
+    "hitDice": 8,
+    "spellcasting": {
+      "ability": "WIS",
+      "progression": 1
+    },
+    "subclasses": [
+      "Dreams",
+      "Moon",
+      "Land",
+      "Shepherd",
+      "Spores",
+      "Stars (UA)",
+      "Twilight (UA)",
+      "Wildfire (UA)"
+    ]
+  },
+  {
+    "name": "Fighter",
+    "hitDice": 10,
+    "subclasses": [
+      "Arcane Archer",
+      "Banneret",
+      "Battle Master",
+      "Brute (UA)",
+      "Cavalier",
+      "Champion",
+      "Echo Knight",
+      "Eldritch Knight",
+      "Knight (UA)",
+      "Monster Hunter (UA)",
+      "Psi Knight (UA)",
+      "Psychic Warrior (UA)",
+      "Rune Knight (UA)",
+      "Samurai",
+      "Scout (UA)",
+      "Sharpshooter (UA)"
+    ]
+  },
+  {
+    "name": "Monk",
+    "hitDice": 8,
+    "subclasses": [
+      "Astral Self (UA)",
+      "Drunken Master",
+      "Four Elements",
+      "Kensei",
+      "Long Death",
+      "Mercy (UA)",
+      "Open Hand",
+      "Shadow",
+      "Soul Knife (UA)",
+      "Sun Soul",
+      "Tranquility (UA)"
+    ]
+  },
+  {
+    "name": "Paladin",
+    "hitDice": 10,
+    "spellcasting": {
+      "ability": "CHA",
+      "progression": 0.5
+    },
+    "subclasses": [
+      "Ancients",
+      "Conquest",
+      "Crown",
+      "Devotion",
+      "Heroism (UA)",
+      "Treachery (UA)",
+      "Vengeance",
+      "Watchers (UA)",
+      "Oathbreaker"
+    ]
+  },
+  {
+    "name": "Ranger (UA)",
+    "hitDice": 10,
+    "spellcasting": {
+      "ability": "WIS",
+      "progression": 0.5
+    },
+    "subclasses": [
+      "Beast Master",
+      "Fey Wanderer (UA)",
+      "Gloom Stalker",
+      "Horizon Walker",
+      "Hunter",
+      "Monster Slayer",
+      "Primeval Guardian (UA)",
+      "Swarmkeeper (UA)"
+    ]
+  },
+  {
+    "name": "Rogue",
+    "hitDice": 8,
+    "subclasses": [
+      "Arcane Trickster",
+      "Assassin",
+      "Inquisitive",
+      "Mastermind",
+      "Revived (UA)",
+      "Scout",
+      "Soulknife (UA)",
+      "Soulknife Revisited (UA)",
+      "Swashbuckler",
+      "Thief"
+    ]
+  },
+  {
+    "name": "Sorcerer",
+    "hitDice": 6,
+    "spellcasting": {
+      "progression": 1,
+      "ability": "CHA"
+    },
+    "subclasses": [
+      "Aberrant Mind (UA)",
+      "Clockwork Soul (UA)",
+      "Draconic Bloodline",
+      "Divine Soul",
+      "Giant Soul (UA)",
+      "Phoenix (UA)",
+      "Psionic Soul (UA)",
+      "Pyromancy (Kaladesh)",
+      "Sea (UA)",
+      "Shadow",
+      "Stone (UA)",
+      "Storm",
+      "Wild Magic"
+    ]
+  },
+  {
+    "name": "Warlock",
+    "hitDice": 8,
+    "subclasses": [
+      "Archfey",
+      "Celestial",
+      "Fiend",
+      "Great Old One",
+      "Hexblade",
+      "Kraken (UA)",
+      "Lurker in the Deep (UA)",
+      "Noble Genie (UA)",
+      "Raven Queen (UA)",
+      "Seeker (UA)",
+      "Undying"
+    ],
+    "spellcasting": {
+      "ability": "CHA",
+      "progression": 0
+    }
+  },
+  {
     "name": "Wizard",
     "hitDice": 6,
-    "savingThrows": ["INT", "WIS"],
-    "skills": [
-      "Arcana",
-      "Insight",
-      "History",
-      "Medicine",
-      "Investigation",
-      "Religion"
+    "subclasses": [
+      "Abjuration",
+      "Bladesinger",
+      "Conjuration",
+      "Divination",
+      "Enchantment",
+      "Evocation",
+      "Illusion",
+      "Invention (UA)",
+      "Lore Mastery (UA)",
+      "Necromancy",
+      "Onomancy (UA)",
+      "Psionics (UA)",
+      "Theurgy (UA)",
+      "Transmutation",
+      "War Magic"
     ],
-    "data": ":/class_data/wizard.html",
-    "subclasses": {
-      "divination": {
-        "name": "Divination"
-      }
-    }
-  },
-
-  "cleric": {
-    "id": "cleric",
-    "name": "Cleric",
-    "hitDice": "d8",
-    "savingThrows": ["WIS", "CHA"],
-    "subclasses": {
-      "arcana": {
-        "name": "Arcana"
-      },
-      "knowledge": {
-        "name": "Knowledge"
-      }
+    "spellcasting": {
+      "ability": "INT",
+      "progression": 1
     }
   }
-}
+]
