@@ -1,7 +1,7 @@
 import { remote } from "electron";
 import path from "path";
-// import fs from "fs";
-import { promises as fsPromises } from "fs";
+import fs from "fs";
+// import { promises as fsPromises } from "fs";
 
 const userDataPath = path.join(remote.app.getPath("userData"), "characters");
 
@@ -10,6 +10,8 @@ const baseDir =
         ? userDataPath
         : path.resolve("./test_files");
 
+console.log(baseDir);
+
 /**
  * reads a character file in json format and returns the object with the data
  * @param {string} characterFile the path of the character file relative to the base dir
@@ -17,7 +19,7 @@ const baseDir =
  */
 export const readCharacter = async characterFile => {
     const filePath = path.join(baseDir, characterFile);
-    const data = await fsPromises.readFile(filePath, "utf-8");
+    const data = fs.readFileSync(filePath, "utf-8");
     const character = JSON.parse(data);
     return character;
 };
@@ -28,8 +30,11 @@ export const readCharacter = async characterFile => {
  */
 export const characterList = async () => {
     const charFile = path.join(baseDir, "characters.json");
+    console.log("Character file location: " + charFile);
     try {
-        const data = await fsPromises.readFile(charFile, "utf-8");
+        console.log("before read data");
+        const data = fs.readFileSync(charFile, "utf-8");
+        console.log("Read the data");
         return JSON.parse(data);
     } catch (error) {
         return [];
@@ -49,5 +54,5 @@ export const saveCharacter = async (characterData, characterFile) => {
     }
     console.log("Writing data to file");
     console.log(data);
-    fsPromises.writeFile(filePath, data);
+    fs.writeFileSync(filePath, data);
 };
