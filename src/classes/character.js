@@ -11,6 +11,7 @@ import { Classes } from "./playerClass";
 export class Character {
   constructor(character = {}) {
     character = character || {};
+    this.speed = character.speed || 0
     this.basicInfo = new BasicInfo(character.basicInfo);
     this.abilityScores = new AbilityScores(character.abilityScores);
     this.health = new Health(character.health);
@@ -22,6 +23,7 @@ export class Character {
     this.proficiencyBonus = character.proficiencyBonus || 0;
     this.notes = character.notes || [];
     this.proficiencies = new Proficiencies(character.proficiencies);
-    this.class = new Classes(character.classes);
+    this.classes = new Classes(character.classes);
+    this.race = character.race || ""
   }
 }

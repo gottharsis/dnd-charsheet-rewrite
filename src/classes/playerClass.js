@@ -18,6 +18,10 @@ export class Classes {
     this._classes = classes.map(i => new PlayerClass(i));
   }
 
+  totalLevel() {
+    return R.compose(R.sum, R.pluck("level"));
+  }
+
   toString() {
     return this._classes.map(i => i.toString()).join("/");
   }

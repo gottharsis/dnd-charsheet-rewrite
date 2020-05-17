@@ -4,7 +4,7 @@ export class BasicInfo {
   playerName = "";
 
   constructor(basicInfo = {}) {
-    for (let key of ["name", "speed", "playerName"]) {
+    for (let key of ["name", "playerName"]) {
       if (basicInfo.hasOwnProperty(key)) {
         this[key] = basicInfo[key];
       }

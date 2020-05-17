@@ -63,5 +63,9 @@ export class Magic {
     )(magic);
   }
 
-  resetSpellSlots() {}
+  resetSpellSlots() {
+    for (let s of this.spellSlots) {
+      s.used = 0;
+    }
+  }
 }
