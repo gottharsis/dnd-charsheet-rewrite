@@ -1,4 +1,4 @@
-import R from "ramda";
+import * as R from "ramda";
 import { addIfAbsent } from "@/util/util";
 
 export class SpellSlot {
@@ -35,7 +35,7 @@ export class CastingClass {
   }
 
   alwaysPrepare(spell) {
-    learnSpell(spell);
+    this.learnSpell(spell);
     this.alwaysPrepared = addIfAbsent(spell, this.alwaysPrepared);
   }
 

@@ -1,4 +1,4 @@
-import R from "ramda";
+import * as R from "ramda";
 export class PlayerClass {
   name = "";
   level = 0;
@@ -8,7 +8,7 @@ export class PlayerClass {
   }
 
   toString() {
-    return `${subclass} ${name} ${level}`;
+    return `${this.subclass} ${this.name} ${this.level}`;
   }
 }
 

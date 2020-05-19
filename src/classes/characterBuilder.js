@@ -1,15 +1,16 @@
-import { Inventory } from "./inventory";
+// import { Inventory } from "./inventory";
 import { AbilityScores } from "./abilityScores";
-import { Health } from "./health";
-import { Magic } from "./magic";
-import { Armor } from "./armor";
-import { Ability, Feature } from "./ability";
+// import { Health } from "./health";
+// import { Magic } from "./magic";
+// import { Armor } from "./armor";
+// import { Ability, Feature } from "./ability";
 import { Proficiencies } from "./proficiencies";
 import { BasicInfo } from "./basicInfo";
 import { Character } from "./character";
-import R from "ramda";
-import { Classes } from "./playerClass";
+import * as R from "ramda";
+// import { Classes } from "./playerClass";
 import { spellTable } from "@/reference/spellslots";
+import { CastingClass } from "./magic";
 
 // const createCastingClass = (abilityScores, magicSource, profBonus) =>
 //   new CastingClass({

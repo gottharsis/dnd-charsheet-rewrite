@@ -1,4 +1,4 @@
-import R from "ramda";
+import * as R from "ramda";
 
 export const calculateModifier = R.pipe(
   R.subtract(R.__, 10),
