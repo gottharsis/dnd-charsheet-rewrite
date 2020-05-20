@@ -1,5 +1,5 @@
 // import { Inventory } from "./inventory";
-import { AbilityScores } from "./abilityScores";
+// import { AbilityScores } from "./abilityScores";
 // import { Health } from "./health";
 // import { Magic } from "./magic";
 // import { Armor } from "./armor";
@@ -8,9 +8,11 @@ import { Proficiencies } from "./proficiencies";
 import { BasicInfo } from "./basicInfo";
 import { Character } from "./character";
 import * as R from "ramda";
+// import R from "ramda";
 // import { Classes } from "./playerClass";
 import { spellTable } from "@/reference/spellslots";
 import { CastingClass } from "./magic";
+import { abilityOrder } from "@/classes/abilityScores";
 
 // const createCastingClass = (abilityScores, magicSource, profBonus) =>
 //   new CastingClass({
@@ -25,7 +27,7 @@ export class CharacterBuilder {
   constructor() {
     this.basicInfo = new BasicInfo();
     this.race = {};
-    this.abilityScores = new AbilityScores();
+    this.abilityScores = [8, 8, 8, 8, 8, 8];
     this.classes = [];
     this.background = {};
     this.proficiencies = new Proficiencies();
@@ -46,7 +48,8 @@ export class CharacterBuilder {
   }
 
   _abilityScores() {
-    return R.mergeWith(R.add, this.abilityScores, this.race.ability);
+    const ab = Object.fromEntries(R.zip(abilityOrder, this.abilityScores));
+    return R.mergeWith(R.add, ab, this.race.ability);
   }
   _health() {
     const hp = R.sum(this.hp);

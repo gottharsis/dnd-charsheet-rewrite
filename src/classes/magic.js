@@ -40,14 +40,14 @@ export class CastingClass {
   }
 
   alwaysUnprepare(spell) {
-    this.alwaysPRepared = R.reject(R.eq(spell), this.alwaysPrepared);
+    this.alwaysPRepared = R.reject(R.equals(spell), this.alwaysPrepared);
   }
   forgetSpell(spell) {
-    this.knownSpells = R.reject(R.eq(spell), this.knownSpells);
+    this.knownSpells = R.reject(R.equals(spell), this.knownSpells);
   }
 
   unprepareSpell(spell) {
-    this.preparedSpells = R.reject(R.eq(spell), this.preparedSpells);
+    this.preparedSpells = R.reject(R.equals(spell), this.preparedSpells);
   }
 }
 

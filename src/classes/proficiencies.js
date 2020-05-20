@@ -11,7 +11,7 @@ export class Proficiencies {
     if (!proficiencies) return;
     for (let key of [
       "armor",
-      "weapns",
+      "weapons",
       "tools",
       "savingThrows",
       "skills",

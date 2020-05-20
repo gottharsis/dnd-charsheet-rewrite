@@ -1,6 +1,14 @@
 module.exports = {
-    configureWebpack: {
-        devtool: "source-map"
-    },
-    transpileDependencies: ["vuetify"]
+  configureWebpack: {
+    devtool: "source-map"
+  },
+  transpileDependencies: ["vuetify"]
+  //   chainWebpack: config => {
+  //     config.module
+  //       .rule("json")
+  //       .test(/\.json$/)
+  //       .use("json-loader")
+  //       .loader("json-loader")
+  //       .end();
+  //   }
 };
