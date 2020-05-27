@@ -44,6 +44,7 @@ import { CharacterBuilder } from "@/classes/characterBuilder";
 import BasicInfo from "./BasicInfo";
 import RaceVue from "./Race.vue";
 import AbilityScoresVue from "./AbilityScores.vue";
+import ClassesVue from "./Classes.vue";
 // class Step {
 //   constructor(name) {
 //     this.label = name;
@@ -87,7 +88,8 @@ export default {
         },
         {
           label: "Classes",
-          state: StateEnum.UNVISITED
+          state: StateEnum.UNVISITED,
+          component: ClassesVue
         },
         {
           label: "Background and Proficiencies",

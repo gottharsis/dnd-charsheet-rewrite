@@ -53,9 +53,16 @@ export class CharacterBuilder {
   }
   _health() {
     const hp = R.sum(this.hp);
+    const hitDiceRaw = R.map(R.path(["classData", "hitDice"]), this.classes);
+    const freq = R.countBy(R.identity, hitDiceRaw);
+    const hitDice = R.map(
+      ([die, amount]) => ({ die, amount }),
+      Object.entries(freq)
+    );
     return {
       hp,
-      maxHp: hp
+      maxHp: hp,
+      hitDice
     };
   }
 
@@ -70,9 +77,25 @@ export class CharacterBuilder {
           progression: magicSource.progression
         })
     );
+
+    // create a MagicSource from a class
+    const createMagicSource = cl => {
+      if (!R.has("spellcasting", cl)) return null;
+      return {
+        name: cl.name,
+        ...cl.spellcasting
+      };
+    };
     const castingClasses = R.map(
       createCastingClass(abilityScores, profBonus),
-      this.magicSources
+      R.concat(
+        this.magicSources,
+        R.pipe(
+          R.pluck("classData"),
+          R.map(createMagicSource),
+          R.reject(R.isNil)
+        )(this.classes)
+      )
     );
 
     const spellLevel = R.pipe(
@@ -103,6 +126,11 @@ export class CharacterBuilder {
   _race() {
     return this.race.name;
   }
+
+  _classes() {
+    return R.pick([]);
+  }
+
   build() {
     const proficiencyBonus = this._proficiencyBonus();
     const abilityScores = this._abilityScores();
