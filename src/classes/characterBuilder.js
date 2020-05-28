@@ -54,10 +54,10 @@ export class CharacterBuilder {
   _health() {
     const hp = R.sum(this.hp);
     const hitDiceRaw = R.map(R.path(["classData", "hitDice"]), this.classes);
-    const freq = R.countBy(R.identity, hitDiceRaw);
+    const hitDiceFreq = R.countBy(R.identity, hitDiceRaw);
     const hitDice = R.map(
       ([die, amount]) => ({ die, amount }),
-      Object.entries(freq)
+      Object.entries(hitDiceFreq)
     );
     return {
       hp,
