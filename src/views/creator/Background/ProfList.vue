@@ -1,26 +1,28 @@
 <template>
-  <v-col justify="center">
-    <v-row v-for="prof in profList" :key="prof.id" fluid>
-      <v-col>
-        <v-text-field
-          label="Name"
-          v-model="prof.name"
-          @input="handleInput"
-        ></v-text-field>
-      </v-col>
-      <v-col>
-        <v-select
-          :items="proficiencyOptions"
-          v-model="prof.proficiency"
-        ></v-select>
-      </v-col>
-      <v-col>
-        <v-btn icon @click="removeProf(prof.id)"
-          ><v-icon color="red">mdi-delete</v-icon></v-btn
-        >
-      </v-col>
-    </v-row>
-  </v-col>
+  <v-row fluid>
+    <v-col justify="center">
+      <v-row v-for="prof in profList" :key="prof.id" fluid>
+        <v-col cols="6">
+          <v-text-field
+            label="Name"
+            v-model="prof.name"
+            @input="handleInput"
+          ></v-text-field>
+        </v-col>
+        <v-col>
+          <v-select
+            :items="proficiencyOptions"
+            v-model="prof.proficiency"
+          ></v-select>
+        </v-col>
+        <v-col>
+          <v-btn icon @click="removeProf(prof.id)"
+            ><v-icon color="red">mdi-delete</v-icon></v-btn
+          >
+        </v-col>
+      </v-row>
+    </v-col>
+  </v-row>
 </template>
 
 <script>

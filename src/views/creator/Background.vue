@@ -39,8 +39,11 @@
           <h3>Other Proficiencies</h3>
           <p>Enter your other proficiencies here</p>
           <div v-for="prof in otherProficiencies" :key="prof">
-            <h4>{{ capitalizeFirst(prof) }}</h4>
-            <prof-list v-model="builder.proficiencies[prof]" />
+            <div>
+              <h4>{{ capitalizeFirst(prof) }}</h4>
+              <prof-list v-model="builder.proficiencies[prof]" />
+            </div>
+            <v-divider />
           </div>
         </v-col>
       </v-row>
