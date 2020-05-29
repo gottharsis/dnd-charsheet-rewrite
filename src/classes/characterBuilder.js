@@ -22,6 +22,13 @@ import { abilityOrder } from "@/classes/abilityScores";
 //     attackBonus: abilityScores[magicSource.ability] + profBonus,
 //     progression: magicSource.progression
 //   });
+export const createProficienciesObject = R.when(
+  Array.isArray,
+  R.pipe(
+    R.map(elem => ({ [elem]: 1 })),
+    R.mergeAll
+  )
+);
 
 export class CharacterBuilder {
   constructor() {
@@ -115,11 +122,38 @@ export class CharacterBuilder {
   // TODO: add inventory stuff
 
   _proficiencies() {
-    const combineProficiencies = R.reduce(R.mergeWith(R.concat), {});
+    // const combineProficiencies = R.reduce(R.mergeWith(R.concat), {});
+    // return combineProficiencies([
+    //   this.proficiencies,
+    //   this.race.proficiencies,
+    //   this.background.proficiencies
+    // ]);
+
+    // convert ["Thieves tools", "Brewers"] into { "thieves tools": 1, "brewers": 1}
+    // but leave { 'athletics': 1 } alone
+
+    // const proficienciesTransformer = {
+    //   armor: createProficienciesObject,
+    //   weapons: createProficienciesObject,
+    //   tools: createProficienciesObject,
+    //   savingThrows: createProficienciesObject,
+    //   languages: createProficienciesObject,
+    //   skills: createProficienciesObject
+    // };
+    const profTransform = R.pipe(
+      R.map(k => ({ [k]: createProficienciesObject })),
+      R.mergeAll
+    )(["armor", "weapons", "tools", "savingThrows", "languages", "skills"]);
+
+    const combineProficiencies = R.pipe(
+      R.map(R.evolve(profTransform)),
+      R.mergeAll
+    );
+
     return combineProficiencies([
-      this.proficiencies,
       this.race.proficiencies,
-      this.background.proficiencies
+      this.background.proficiencies,
+      this.proficiencies
     ]);
   }
 

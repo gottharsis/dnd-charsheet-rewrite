@@ -45,6 +45,7 @@ import BasicInfo from "./BasicInfo";
 import RaceVue from "./Race.vue";
 import AbilityScoresVue from "./AbilityScores.vue";
 import ClassesVue from "./Classes.vue";
+import BackgroundVue from "./Background.vue";
 // class Step {
 //   constructor(name) {
 //     this.label = name;
@@ -93,7 +94,8 @@ export default {
         },
         {
           label: "Background and Proficiencies",
-          state: StateEnum.UNVISITED
+          state: StateEnum.UNVISITED,
+          component: BackgroundVue
         },
         {
           label: "Magic",
