@@ -37,7 +37,10 @@
         </v-col>
         <v-col cols="4">
           <h3>Other Proficiencies</h3>
-          <p>Enter your other proficiencies here</p>
+          <p>
+            Enter your other proficiencies here. Do not include proficiences
+            that come from race or background.
+          </p>
           <div v-for="prof in otherProficiencies" :key="prof">
             <div>
               <h4>{{ capitalizeFirst(prof) }}</h4>
