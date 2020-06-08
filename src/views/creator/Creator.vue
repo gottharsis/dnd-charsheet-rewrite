@@ -46,6 +46,7 @@ import RaceVue from "./Race.vue";
 import AbilityScoresVue from "./AbilityScores.vue";
 import ClassesVue from "./Classes.vue";
 import BackgroundVue from "./Background.vue";
+import MagicVue from "./Magic.vue";
 // class Step {
 //   constructor(name) {
 //     this.label = name;
@@ -100,6 +101,7 @@ export default {
         {
           label: "Magic",
           state: StateEnum.UNVISITED,
+          component: MagicVue,
           optional: true
         },
         {

@@ -122,28 +122,19 @@ export class CharacterBuilder {
   // TODO: add inventory stuff
 
   _proficiencies() {
-    // const combineProficiencies = R.reduce(R.mergeWith(R.concat), {});
-    // return combineProficiencies([
-    //   this.proficiencies,
-    //   this.race.proficiencies,
-    //   this.background.proficiencies
-    // ]);
+    const proficiencyTypes = [
+      "armor",
+      "weapons",
+      "tools",
+      "savingThrows",
+      "languages",
+      "skills"
+    ];
 
-    // convert ["Thieves tools", "Brewers"] into { "thieves tools": 1, "brewers": 1}
-    // but leave { 'athletics': 1 } alone
-
-    // const proficienciesTransformer = {
-    //   armor: createProficienciesObject,
-    //   weapons: createProficienciesObject,
-    //   tools: createProficienciesObject,
-    //   savingThrows: createProficienciesObject,
-    //   languages: createProficienciesObject,
-    //   skills: createProficienciesObject
-    // };
     const profTransform = R.pipe(
       R.map(k => ({ [k]: createProficienciesObject })),
       R.mergeAll
-    )(["armor", "weapons", "tools", "savingThrows", "languages", "skills"]);
+    )(proficiencyTypes);
 
     const combineProficiencies = R.pipe(
       R.map(R.evolve(profTransform)),
